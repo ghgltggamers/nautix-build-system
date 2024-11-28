@@ -1,7 +1,14 @@
 #include <iostream>
 #include <string>
 
-    std::string build_cpp = R"(#include <iostream>
+    std::string build_cpp = R"(/*
+ * Copyright (c) build 2024
+ * Written by ghgltggamer
+ * Check the LICENSE file for Licensing info
+ * Check out the README.md file for more information
+ */
+// Source starts from here
+#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -100,12 +107,22 @@ int main(int argc, char* argv[]) {
    //  std::cout << "Binary Directory: " << PROJECT_BIN_DIR << "\n";
    //  std::cout << "Main File: " << PROJECT_MAIN_FILE << "\n";
    //  std::cout << "Main Output File: " << PROJECT_MAIN_FILE_OUTPUT << "\n";
+   if (PROJECT_COMPILER == "gcc" || PROJECT_COMPILER == "g++"){
+    PROJECT_COMPILER = "g++";
+   }
+   else if (PROJECT_COMPILER == "clang" || PROJECT_COMPILER == "clang++"){
+    PROJECT_COMPILER = "clang++";
+   }
+   else {
+    std::cout<<"A valid project compiler must be given use clang or gcc instead\n";
+   }
 
    // build
-    std::string command = "clear\n"
+    std::string command = "mkdir " + PROJECT_BIN_DIR + "\n"
+                          "clear\n"
                           "echo compiling...\n"
                           "echo \"\"\n"
-                          "g++ " + PROJECT_MAIN_FILE + " " + PROJECT_LINK_FILES + " -o " + PROJECT_BIN_DIR + "/" + PROJECT_MAIN_FILE_OUTPUT + "\n"
+                          + PROJECT_COMPILER + " " + PROJECT_MAIN_FILE + " " + PROJECT_LINK_FILES + " -o " + PROJECT_BIN_DIR + "/" + PROJECT_MAIN_FILE_OUTPUT + " " + PROJECT_COMPILER_ARGS + "\n"
                           ;
     if (EXECUTE_PROJECT == "true"){
       command += "echo Attempting to run the project\n./" + PROJECT_BIN_DIR + "/" + PROJECT_MAIN_FILE_OUTPUT + "\n";
@@ -141,4 +158,5 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
+
 )";
