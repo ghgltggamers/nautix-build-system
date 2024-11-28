@@ -6,7 +6,7 @@ This allows you to compile your C++ projects with a lot of ease!
 Install nautix by using following commands set
 ```bash
 git clone https://github.com/ghgltggamers/nautix-build-system.git
-cd nautix-build-system
+cd nautix-build-system/src
 g++ main.cpp -o nautix
 echo "Nautix was compiled now initalise it in your environment variable forr convience"
 echo ""
