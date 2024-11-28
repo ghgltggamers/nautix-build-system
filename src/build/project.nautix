@@ -4,8 +4,8 @@ project-name=build
 project-version=1.0
 project-compiler=gcc
 project-main-file=main.cpp
-project-bin-directory=bin
-project-main-output-file=main
+project-bin-directory=.
+project-main-output-file=build
 # temprorary binaries are those who will be deleted after program is being executed and perm binaries are those which will exist ever after project is done, So play with the setting bellow accordingly
 project-bin-type=perm
 # Uncomment the line bellow if want to parse any arguments for compiler, these will be placed in between file name and -o flag by nautix
